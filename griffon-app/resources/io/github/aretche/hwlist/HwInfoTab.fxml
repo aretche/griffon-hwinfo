@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import griffon.javafx.support.JavaFXUtils?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            xmlns:fx="http://javafx.com/fxml">
+    <Button AnchorPane.leftAnchor="420" AnchorPane.topAnchor="5"
+            prefWidth="200.0" fx:id="refreshButton"
+            JavaFXUtils.griffonActionId="refreshInfo"/>
+    <TextArea AnchorPane.leftAnchor="20" AnchorPane.topAnchor="40"
+              prefHeight="360" prefWidth="600"
+              fx:id="output" />
+</AnchorPane>
