@@ -8,14 +8,14 @@ import griffon.transform.Threading
 import javax.annotation.Nonnull
 
 @ArtifactProviderFor(GriffonController)
-class GriffonHwlistController {
+class HwInfoController {
     @MVCMember @Nonnull
-    GriffonHwlistModel model
+    HwInfoModel model
 
     @ControllerAction
     @Threading(Threading.Policy.INSIDE_UITHREAD_ASYNC)
-    void click() {
-        int count = model.clickCount.toInteger()
-        model.clickCount = String.valueOf(count + 1)
+    void refreshInfo() {
+        model.detail = new Date().format("yyyyMMdd-HH:mm:ss.SSS", TimeZone.getTimeZone('UTC'))
+        println model.detail
     }
 }

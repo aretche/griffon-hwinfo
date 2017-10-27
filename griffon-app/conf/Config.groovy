@@ -1,13 +1,15 @@
 application {
-    title = 'griffon-hwlist'
-    startupGroups = ['griffonHwlist']
+    title = 'Info de Hardware con Griffon'
+    startupGroups = ['app']
     autoShutdown = true
 }
 mvcGroups {
-    // MVC Group for "griffonHwlist"
-    'griffonHwlist' {
-        model      = 'io.github.aretche.hwlist.GriffonHwlistModel'
-        view       = 'io.github.aretche.hwlist.GriffonHwlistView'
-        controller = 'io.github.aretche.hwlist.GriffonHwlistController'
+    'app' {
+        view       = 'io.github.aretche.hwlist.AppView'
+    }
+    'hwInfo' {
+        model      = 'io.github.aretche.hwlist.HwInfoModel'
+        view       = 'io.github.aretche.hwlist.HwInfoView'
+        controller = 'io.github.aretche.hwlist.HwInfoController'
     }
 }
