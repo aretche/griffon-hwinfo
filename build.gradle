@@ -68,6 +68,7 @@ jfx {
 
 dependencies {
     compile "org.codehaus.griffon:griffon-guice:${griffon.version}"
+    compile "org.slf4j:slf4j-simple:${slf4jVersion}"
 
     // Iconos y FontAwesome
     compile "org.kordamp.ikonli:ikonli-javafx:1.8.0"
@@ -75,8 +76,6 @@ dependencies {
 
     // Librería de obtención de información de hardware
     compile 'com.github.oshi:oshi-core:3.4.4'
-
-    runtime "org.slf4j:slf4j-simple:${slf4jVersion}"
 
     testCompile "org.codehaus.griffon:griffon-javafx-test:${griffon.version}"
     testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}"
