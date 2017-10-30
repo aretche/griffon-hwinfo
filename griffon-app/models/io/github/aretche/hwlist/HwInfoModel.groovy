@@ -15,6 +15,8 @@ class HwInfoModel {
     String cpuID = ""
     String netIF = ""
     String macAdress = ""
+    String rootFsDevice = ""
+    String rootDiskSerial = ""
     @FXObservable
     String detail = ""
 
@@ -37,6 +39,10 @@ class HwInfoModel {
             out += "Network IF: ${netIF}\n"
         if(macAdress)
             out += "MAC Address: ${macAdress}\n"
+        if(rootFsDevice)
+            out += "Root FS device: ${rootFsDevice}\n"
+        if(rootDiskSerial)
+            out += "Root Disk Serial: ${rootDiskSerial}\n"
         out
     }
 }

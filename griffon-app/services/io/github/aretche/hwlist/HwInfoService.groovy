@@ -2,7 +2,10 @@ package io.github.aretche.hwlist
 
 import griffon.core.artifact.GriffonService
 import oshi.SystemInfo
+import oshi.hardware.HWDiskStore
+import oshi.hardware.HWPartition
 import oshi.hardware.NetworkIF
+import oshi.software.os.OSFileStore
 
 /**
  * Created by arellanog on 27/10/17.
@@ -51,6 +54,53 @@ class HwInfoService {
         if(!si)
             si = new SystemInfo()
         si.hardware.computerSystem.baseboard.model
+    }
+
+    // Retorna el número de serie de un disco
+    String getDiscSerialNumber(String deviceName, SystemInfo si = null){
+        if(!si)
+            si = new SystemInfo()
+        String serialNumber
+        si.hardware.diskStores.any { HWDiskStore ds ->
+            if(deviceName == ds.name){
+                serialNumber = ds.serial
+                true
+            } else {
+                return
+            }
+        }
+        serialNumber
+    }
+
+    // Retorna el dispositivo del filesystem raíz (/ o C:)
+    String getRootFsDeviceName(SystemInfo si = null){
+        if(!si)
+            si = new SystemInfo()
+        String volume = getRootFsVolume(si)
+        String device
+        si.hardware.diskStores.each { HWDiskStore ds ->
+            ds.partitions.each { HWPartition p ->
+                if(p.identification == volume)
+                    device = ds.name
+            }
+        }
+        device
+    }
+
+    // Retorna el dispositivo del filesystem raíz (/ o C:)
+    String getRootFsVolume(SystemInfo si = null){
+        if(!si)
+            si = new SystemInfo()
+        String volume
+        si.operatingSystem.fileSystem.fileStores.any { OSFileStore fs ->
+            if(fs.mount == '/'){
+                volume = fs.volume
+                true
+            } else {
+                return
+            }
+        }
+        volume
     }
 
     // Retorna la MAC address de la interfaz con nombre ifName

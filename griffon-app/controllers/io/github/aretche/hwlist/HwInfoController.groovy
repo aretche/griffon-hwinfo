@@ -35,6 +35,9 @@ class HwInfoController {
             model.macAdress = hwInfoService.getIfaceMacAddress(ifaceName)
         }
 
+        model.rootFsDevice = hwInfoService.getRootFsDeviceName()
+        model.rootDiskSerial = hwInfoService.getDiscSerialNumber(model.rootFsDevice)
+
         model.detail = model.toString()
     }
 }
